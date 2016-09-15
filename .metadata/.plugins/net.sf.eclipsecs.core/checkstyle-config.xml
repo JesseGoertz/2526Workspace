@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<checkstyle-configurations file-format-version="5.0.0" default-check-configuration="2526 Google Checks">
+  <check-configuration name="2526 Google Checks" location="internal_config_1473913860973.xml" type="internal" description="Checkstyle configurartion that checks the Google coding conventions (https://google-styleguide.googlecode.com/svn-history/r130/trunk/javaguide.html)."/>
+</checkstyle-configurations>
