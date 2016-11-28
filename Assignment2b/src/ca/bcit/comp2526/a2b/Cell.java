@@ -1,4 +1,4 @@
-package ca.bcit.comp2526.a2a;
+package ca.bcit.comp2526.a2b;
 
 import java.awt.Container;
 import javax.swing.JPanel;
@@ -17,15 +17,23 @@ public class Cell extends JPanel {
     }
     
     public void init() {
-        int rand =  (int) (Math.random() * 10);
-        if (rand <= 2) {
+        int rand =  (int) (Math.random() * 100);
+        if (rand <= 30) {
             Plant plant = new Plant(this);
             inhabitant = plant;
             plant.init();
-        } else if (rand <= 3) {
+        } else if (rand <= 55) {
             Herbivore herb = new Herbivore(this);
             inhabitant = herb;
             herb.init();
+        } else if (rand <= 65) {
+            Carnivore carn = new Carnivore(this);
+            inhabitant = carn;
+            carn.init();
+        } else if (rand <= 75) {
+            Omnivore omn = new Omnivore(this);
+            inhabitant = omn;
+            omn.init();
         }
     }
     
@@ -50,3 +58,4 @@ public class Cell extends JPanel {
     }
 
 }
+
