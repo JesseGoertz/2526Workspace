@@ -1,7 +1,5 @@
 package ca.bcit.comp2526.a2b;
 
-import java.awt.Color;
-
 public class Omnivore extends Animal {
     
     private static final int[][] COLOR_ARRAY = {
@@ -17,6 +15,10 @@ public class Omnivore extends Animal {
         super(location, STEPS, MAX_HUNGER, MAX_BABES, COLOR_ARRAY);
     }
     
+    /**
+     * Checks to see if this Omnivore can eat the target organism.
+     * @return true if it can eat the target.
+     */
     public boolean canEat(Organism org) {
         return org instanceof Herbivore 
                 || org instanceof Carnivore

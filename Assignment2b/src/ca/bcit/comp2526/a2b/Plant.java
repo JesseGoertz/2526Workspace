@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public class Plant implements Organism {
     
     private Cell container;
-    private static final Color color = new Color(44, 158, 18);
     private static final int[][] COLOR_ARRAY = {
             {67, 242, 48},
             {48, 242, 103},
@@ -18,7 +17,10 @@ public class Plant implements Organism {
     private boolean hasMoved = false;
     private int life;
     
-    
+    /**
+     * Creates a plant in the given cell with a randomly selected shade of green.
+     * @param location - container cell.
+     */
     public Plant(Cell location) {
         container = location;
         life = MAX_LIFE;
@@ -26,11 +28,20 @@ public class Plant implements Organism {
         this.rgb = COLOR_ARRAY[rand];
     }
     
+    /**
+     * Sets the background colour to the proper shade.
+     */
     public void init() {
         float ratio = 1 - (((float) MAX_LIFE - life) / MAX_LIFE);
-        container.setBackground((int) (rbg[0]));
+        container.setBackground(new Color((int) (rgb[0] * ratio), 
+                (int) (rgb[1] * ratio), (int) (rgb[2] * ratio)));
     }
     
+    /**
+     * Checks all surrounding cells to see if there is the proper number of plants and empty
+     * cells to reproduce, then creates new plants if there is.
+     * @param world containing world.
+     */
     public void reproduce(World world) {
         if (!hasMoved) {
             if (--life <= 0) {
@@ -52,8 +63,9 @@ public class Plant implements Organism {
                             || j < 0 || j >= world.getColumnCount()) {
                         continue;
                     }
-                    Organism target = world.getCellAt(i, j).getInhabitant();
-                    if (target == null) {
+                    Cell targCell = world.getCellAt(i, j);
+                    Organism target = targCell.getInhabitant();
+                    if (target == null && !targCell.isWater()) {
                         empty.add(new Point(i, j));
                     } else if (target instanceof Plant) {
                         plants.add(new Point(i, j));
@@ -82,10 +94,17 @@ public class Plant implements Organism {
         }
     }
     
+    /**
+     * Resets the hasMoved flag.
+     */
     public void resetMove() {
         hasMoved = false;
     }
     
+    /**
+     * Sets the hasMoved flag to the given value.
+     * @param val given value.
+     */
     public void setMove(boolean val) {
         hasMoved = val;
     }

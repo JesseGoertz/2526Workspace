@@ -69,7 +69,8 @@ public final class Main {
             throw new IllegalArgumentException("Size cannot be null");
         }
         screenSize = TOOLKIT.getScreenSize();
-        return (new Point((screenSize.width - size.width) / 2, (screenSize.height - size.height) / 2));
+        return (new Point((screenSize.width - size.width) / 2, 
+                (screenSize.height - size.height) / 2));
     }
 
     /**
@@ -79,7 +80,8 @@ public final class Main {
      * @param heightPercent a float
      * @return size as a Dimension
      */
-    public static Dimension calculateScreenArea(final float widthPercent, final float heightPercent) {
+    public static Dimension calculateScreenArea(final float widthPercent, 
+            final float heightPercent) {
         final Dimension screenSize;
         final Dimension area;
         final int width;
@@ -87,11 +89,13 @@ public final class Main {
         final int size;
 
         if ((widthPercent <= 0.0f) || (widthPercent > 100.0f)) {
-            throw new IllegalArgumentException("widthPercent cannot be " + "<= 0 or > 100 - got: " + widthPercent);
+            throw new IllegalArgumentException("widthPercent cannot be " + "<= 0 or > 100 - got: " 
+                    + widthPercent);
         }
 
         if ((heightPercent <= 0.0f) || (heightPercent > 100.0f)) {
-            throw new IllegalArgumentException("heightPercent cannot be " + "<= 0 or > 100 - got: " + heightPercent);
+            throw new IllegalArgumentException("heightPercent cannot be " 
+                    + "<= 0 or > 100 - got: " + heightPercent);
         }
 
         screenSize = TOOLKIT.getScreenSize();

@@ -1,8 +1,6 @@
 package ca.bcit.comp2526.a2b;
 
-import java.awt.Color;
-
-public class Carnivore extends Animal {
+public class Carnivore extends Animal implements HatesWater {
     
     private static final int[][] COLOR_ARRAY = {
             {255, 30, 22},
@@ -13,10 +11,14 @@ public class Carnivore extends Animal {
     private static final int STEPS = 2;
     private static final int MAX_BABES = 1;
     
+    /**
+     * Passes the cell and Carnivore specific variables to parent class.
+     * @param location target cell.
+     */
     public Carnivore(Cell location) {
         super(location, STEPS, MAX_HUNGER, MAX_BABES, COLOR_ARRAY); 
     }
-    
+
     public boolean canEat(Organism org) {
         return org instanceof Herbivore 
                 || org instanceof Omnivore;
@@ -33,5 +35,4 @@ public class Carnivore extends Animal {
     public boolean canWalk(Organism org) {
         return org instanceof Plant;
     }
-
 }

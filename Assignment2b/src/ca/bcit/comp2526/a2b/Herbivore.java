@@ -1,7 +1,5 @@
 package ca.bcit.comp2526.a2b;
 
-import java.awt.Color;
-
 public class Herbivore extends Animal {
     
     private static final int[][] COLOR_ARRAY = {
@@ -13,6 +11,10 @@ public class Herbivore extends Animal {
     private static final int STEPS = 1;
     public static final int MAX_BABES = 2;
     
+    /**
+     * Passes the cell and Herbivore-specific constants to parent.
+     * @param location cell.
+     */
     public Herbivore(Cell location) {
         super(location, STEPS, MAX_HUNGER, MAX_BABES, COLOR_ARRAY);
     }
